@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PRODUCTION DRAWING AND MODELLING</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            color: #333;
+            font-weight: bold;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        var students = {
+            "24800135": "ANBARASU P",
+            "24800136": "AZHAKARASAN P",
+            "24800137": "CHENGAMMA S",
+            "24800138": "DHANANJAY PRASAD GOND",
+            "24800139": "DHIVAKARAN G",
+            "24800140": "DINESHKUMAR R",
+            "24800141": "DURGESHKUMAR JANGID",
+            "24800143": "GOPINATH G",
+            "24800144": "JAYARAM P",
+            "24800146": "KORIKANA SIVAJI",
+            "24800147": "MAGESHWARI R",
+            "24800148": "MOHD IMRAN ANSARI",
+            "24800149": "MOHANRAJ J",
+            "24800151": "NANDALAL HAIBURU",
+            "24800152": "NARAMADHA PRIYA P",
+            "24800154": "NIRMALKUMAR A J",
+            "24800155": "PAVITHRA J",
+            "24800156": "RAJIV RANJAN",
+            "24800157": "RAJU KUMAR",
+            "24800158": "RAMAJAYAM K",
+            "24800159": "RAVOORU VIJAYA",
+            "24800160": "REVATHI P",
+            "24800162": "ROHIT CHOUDHARY",
+            "24800163": "SANGRAM KESARI JENA",
+            "24800164": "SANNY KUMAR",
+            "24800165": "SARANYA P",
+            "24800166": "SARAVANAN M",
+            "24800167": "SHANMUGHAANATHAM S",
+            "24800168": "SHEELA M",
+            "24800169": "SHIVAKUMAR M",
+            "24800170": "SIVARAJA S",
+            "24800171": "SOLOMON S",
+            "24800172": "SURESH R",
+            "24800173": "VENKATESH A"
+        };
+
+        function assignQuestion() {
+            var registerNumber = document.getElementById("registerNumber").value;
+            var studentName = students[registerNumber];
+            var submitButton = document.getElementById("submitButton");
+
+            if (studentName) {
+                var questionNumber = (parseInt(registerNumber) % 3) + 1;
+                var question = questionNumber === 1 ? "SLEEVE AND COTTER JOINT" : "PLUMMER BLOCK";
+                var imagePath = questionNumber === 1 ? "SLEEVE AND COTTER JOINT.jpeg" : "PLUMMER BLOCK.jpeg";
+                var imagePath = questionNumber === 1 ? "BUSHED BEARING.jpg" : "BUSHED BEARING.jpg";
+                document.getElementById("question").innerHTML = "Hello " + studentName + ", Your Question: " + question;
+                document.getElementById("questionImage").src = imagePath;
+                document.getElementById("questionImage").style.display = "block";
+                submitButton.disabled = true;
+            } else {
+                document.getElementById("question").innerHTML = "Invalid Register Number!";
+                document.getElementById("questionImage").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Register Number</h2>
+        <input type="text" id="registerNumber" />
+        <button id="submitButton" onclick="assignQuestion()">Submit</button>
+        <p id="question"></p>
+        <img id="questionImage" style="display:none;" />
+    </div>
+</body>
+</html>
